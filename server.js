@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // ── Serve frontend ────────────────────────────
-app.use(express.static(path.join(__dirname, '..', 'frontend')));
+app.use(express.static(path.join(__dirname)));
 
 // ── API Routes ────────────────────────────────
 const patientsRouter  = require('./routes/patients');
@@ -28,7 +28,7 @@ app.get('/api/health', (req, res) => res.json({ status: 'ok', time: new Date() }
 
 // ── Fallback to frontend ──────────────────────
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // ── Start ─────────────────────────────────────
